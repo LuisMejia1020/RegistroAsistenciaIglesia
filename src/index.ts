@@ -41,4 +41,10 @@ interface IChurchMember {
         this.miembros.push(member)
       }
 
+      // con esta funcion obtenemos un miembro por id 
+  // usamos find para que sea especifico ya que el id es un numero unico que no se repite 
+   getMember(id: number): IChurchMember | undefined {
+    return this.miembros.find(member => member.id === id)
+  }
+
 }
