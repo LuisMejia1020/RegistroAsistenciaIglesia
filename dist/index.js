@@ -1,5 +1,4 @@
 "use strict";
-// creamos una clase que maneje el tracking de la asistencia y asisgnamos las interfaces como arreglos 
 class RegistroAsistencia {
     miembros;
     attendance;
@@ -50,7 +49,7 @@ class RegistroAsistencia {
         else {
             console.log("no forma parte de nuestra iglesia");
         }
-        return this.miembros;
+        return miembrosDeIglesia;
     }
 }
 // creamos las instancias con usaremos la clase attendancestracker
@@ -89,19 +88,19 @@ const asistenciaMyLove = registrador.dameAsistencia(8);
 const asistenciaJose = registrador.dameAsistencia(9);
 const miAsistencia = registrador.dameAsistencia(10);
 /// mandamos a imprimir a consola 
-//console.log("Este es el record de asistencia del hermano ", asistenciaJohn)
-//console.log("Este es el record de asistencia del hermano ",asistenciaJane)
-//console.log("Este es el record de asistencia del hermano ",asistenciaErwin)
-//console.log("Este es el record de asistencia del hermano ",asistenciaLevi)
-//console.log("Este es el record de asistencia del hermano ",asistenciaEren)
-//console.log("Este es el record de asistencia del hermano ",asistenciaThor)
-//console.log("Este es el record de asistencia del hermano ",asistenciaHelton)
-//console.log("Este es el record de asistencia del hermano ",asistenciaMyLove)
-//console.log("Este es el record de asistencia del hermano ",asistenciaJose)
-//console.log("Este es el record de asistencia del hermano ",miAsistencia)
+console.log("Este es el record de asistencia del hermano ", asistenciaJohn);
+console.log("Este es el record de asistencia del hermano ", asistenciaJane);
+console.log("Este es el record de asistencia del hermano ", asistenciaErwin);
+console.log("Este es el record de asistencia del hermano ", asistenciaLevi);
+console.log("Este es el record de asistencia del hermano ", asistenciaEren);
+console.log("Este es el record de asistencia del hermano ", asistenciaThor);
+console.log("Este es el record de asistencia del hermano ", asistenciaHelton);
+console.log("Este es el record de asistencia del hermano ", asistenciaMyLove);
+console.log("Este es el record de asistencia del hermano ", asistenciaJose);
+console.log("Este es el record de asistencia del hermano ", miAsistencia);
 console.log("Este es el record de asistencia del hermano ", miAsistencia);
 //borramos miembros
-console.log(registrador.deleteMember(3));
+//console.log(registrador.deleteMember(1))
 //console.log(registrador.deleteMember(10))
 //notificar a los hermanos de la iglesia 
-//console.log(registrador.holaHermanos(true))
+console.log(registrador.holaHermanos(true));

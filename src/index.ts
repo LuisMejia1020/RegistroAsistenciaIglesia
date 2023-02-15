@@ -63,6 +63,18 @@ interface IChurchMember {
     return this.attendance.filter(record => record.memberId === memberId)
      }
 
+    holaHermanos(memberActivo: boolean):IChurchMember[] | undefined {
+        const miembrosDeIglesia = this.miembros.filter(miembros => memberActivo === true)
+        if(miembrosDeIglesia){
+            console.log("Buenos dias Hermanos, gracias por ser parte de nuestra Iglesia, Dios los ama", miembrosDeIglesia)
+        }else{
+            console.log("no forma parte de nuestra iglesia")
+        }
+
+        return miembrosDeIglesia
+    }
+  
+
 }
 
 
@@ -81,7 +93,6 @@ registrador.addMember({ id: 7, nombre: 'Helton Lopez', email: 'Helton@gmail.com'
 registrador.addMember({ id: 8, nombre: 'Ivanna Konstantinovna Perepeshko', email: 'Ivanna@gmail.com', telefono: '+9 6584765341', memberActivo: true })
 registrador.addMember({ id: 9, nombre: 'Jose David Mejia Castro', email: 'Jose@gmail.com', telefono: '+43 45789324', memberActivo: true })
 registrador.addMember({ id: 10, nombre: 'Luis Fernando Mejia Castro', email: 'Luisrvp5@gmail.com', telefono: '+504 33614633' , memberActivo: true})
-
 
 
 // usamos la funcion recordAttendance y llenamos los parametros 
@@ -110,16 +121,18 @@ const asistenciaJose = registrador.dameAsistencia(9)
 const miAsistencia = registrador.dameAsistencia(10)
 
 /// mandamos a imprimir a consola 
-//console.log("Este es el record de asistencia del hermano ", asistenciaJohn)
-//console.log("Este es el record de asistencia del hermano ",asistenciaJane)
-//console.log("Este es el record de asistencia del hermano ",asistenciaErwin)
-//console.log("Este es el record de asistencia del hermano ",asistenciaLevi)
-//console.log("Este es el record de asistencia del hermano ",asistenciaEren)
-//console.log("Este es el record de asistencia del hermano ",asistenciaThor)
-//console.log("Este es el record de asistencia del hermano ",asistenciaHelton)
-//console.log("Este es el record de asistencia del hermano ",asistenciaMyLove)
-//console.log("Este es el record de asistencia del hermano ",asistenciaJose)
-//console.log("Este es el record de asistencia del hermano ",miAsistencia)
-//console.log("Este es el record de asistencia del hermano ",miAsistencia)
+console.log("Este es el record de asistencia del hermano ", asistenciaJohn)
+console.log("Este es el record de asistencia del hermano ",asistenciaJane)
+console.log("Este es el record de asistencia del hermano ",asistenciaErwin)
+console.log("Este es el record de asistencia del hermano ",asistenciaLevi)
+console.log("Este es el record de asistencia del hermano ",asistenciaEren)
+console.log("Este es el record de asistencia del hermano ",asistenciaThor)
+console.log("Este es el record de asistencia del hermano ",asistenciaHelton)
+console.log("Este es el record de asistencia del hermano ",asistenciaMyLove)
+console.log("Este es el record de asistencia del hermano ",asistenciaJose)
+console.log("Este es el record de asistencia del hermano ",miAsistencia)
+console.log("Este es el record de asistencia del hermano ",miAsistencia)
 
+//notificar a los hermanos de la iglesia 
+console.log(registrador.holaHermanos(true))
 
