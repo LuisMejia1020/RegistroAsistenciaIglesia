@@ -55,6 +55,12 @@ interface IChurchMember {
       fechaCulto,
     };
     this.attendance.push(attendanceRecord)
-  }
+    }
+
+    // esta funcion mide el record de asistencia de un miembro 
+    // usamos la interface de attendace 
+   dameAsistencia(memberId: number): IAttendance[] {
+    return this.attendance.filter(record => record.memberId === memberId)
+     }
 
 }
