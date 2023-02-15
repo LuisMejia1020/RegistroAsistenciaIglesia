@@ -81,3 +81,45 @@ registrador.addMember({ id: 7, nombre: 'Helton Lopez', email: 'Helton@gmail.com'
 registrador.addMember({ id: 8, nombre: 'Ivanna Konstantinovna Perepeshko', email: 'Ivanna@gmail.com', telefono: '+9 6584765341', memberActivo: true })
 registrador.addMember({ id: 9, nombre: 'Jose David Mejia Castro', email: 'Jose@gmail.com', telefono: '+43 45789324', memberActivo: true })
 registrador.addMember({ id: 10, nombre: 'Luis Fernando Mejia Castro', email: 'Luisrvp5@gmail.com', telefono: '+504 33614633' , memberActivo: true})
+
+
+
+// usamos la funcion recordAttendance y llenamos los parametros 
+registrador.recordAsistencia(1, '12/02/2023')
+registrador.recordAsistencia(2, '04/06/2021')
+registrador.recordAsistencia(3, '10/01/1992')
+registrador.recordAsistencia(4, '26/05/2023')
+registrador.recordAsistencia(5, '10/06/2023')
+registrador.recordAsistencia(6, '17/07/2023')
+registrador.recordAsistencia(7, '24/09/2023')
+registrador.recordAsistencia(8, '31/12/2023')
+registrador.recordAsistencia(9, '07/07/2023')
+registrador.recordAsistencia(10, '14/02/2023')
+
+
+// creamos una variable donde obtenemos la asistencia del miembro a la iglesia  
+const asistenciaJohn = registrador.dameAsistencia(1)
+const asistenciaJane = registrador.dameAsistencia(2)
+const asistenciaErwin = registrador.dameAsistencia(3)
+const asistenciaLevi = registrador.dameAsistencia(4)
+const asistenciaEren = registrador.dameAsistencia(5)
+const asistenciaThor = registrador.dameAsistencia(6)
+const asistenciaHelton = registrador.dameAsistencia(7)
+const asistenciaMyLove = registrador.dameAsistencia(8)
+const asistenciaJose = registrador.dameAsistencia(9)
+const miAsistencia = registrador.dameAsistencia(10)
+
+/// mandamos a imprimir a consola 
+//console.log("Este es el record de asistencia del hermano ", asistenciaJohn)
+//console.log("Este es el record de asistencia del hermano ",asistenciaJane)
+//console.log("Este es el record de asistencia del hermano ",asistenciaErwin)
+//console.log("Este es el record de asistencia del hermano ",asistenciaLevi)
+//console.log("Este es el record de asistencia del hermano ",asistenciaEren)
+//console.log("Este es el record de asistencia del hermano ",asistenciaThor)
+//console.log("Este es el record de asistencia del hermano ",asistenciaHelton)
+//console.log("Este es el record de asistencia del hermano ",asistenciaMyLove)
+//console.log("Este es el record de asistencia del hermano ",asistenciaJose)
+//console.log("Este es el record de asistencia del hermano ",miAsistencia)
+//console.log("Este es el record de asistencia del hermano ",miAsistencia)
+
+
