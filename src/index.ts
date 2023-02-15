@@ -36,4 +36,9 @@ interface IChurchMember {
    
    }
 
+    // esta funcion nos permite agregar a un miembro a la base de datos
+    addMember(member: IChurchMember) {
+        this.miembros.push(member)
+      }
+
 }
