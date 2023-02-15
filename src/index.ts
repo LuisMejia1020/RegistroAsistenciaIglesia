@@ -41,10 +41,20 @@ interface IChurchMember {
         this.miembros.push(member)
       }
 
-      // con esta funcion obtenemos un miembro por id 
-  // usamos find para que sea especifico ya que el id es un numero unico que no se repite 
-   getMember(id: number): IChurchMember | undefined {
-    return this.miembros.find(member => member.id === id)
+        // con esta funcion obtenemos un miembro por id 
+        // usamos find para que sea especifico ya que el id es un numero unico que no se repite 
+    getMember(id: number): IChurchMember | undefined {
+        return this.miembros.find(member => member.id === id)
+    }
+
+      // Esta funcion mide la asistencia de un miembro de la iglesia
+   recordAsistencia(memberId: number, fechaCulto: string) {
+    const attendanceRecord: IAttendance = {
+      id: this.attendance.length + 1,
+      memberId,
+      fechaCulto,
+    };
+    this.attendance.push(attendanceRecord)
   }
 
 }
