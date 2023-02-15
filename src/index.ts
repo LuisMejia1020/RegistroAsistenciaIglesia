@@ -20,3 +20,20 @@ interface IChurchMember {
       codigo: number,
       msg: string
   }
+
+  class RegistroAsistencia {
+    miembros: IChurchMember[]
+    attendance: IAttendance[]
+   
+   
+ 
+   constructor() {
+     
+     // falta inicializar los miembros y la asistencia de la base de datos 
+     this.miembros = []
+     this.attendance = []
+    
+   
+   }
+
+}
