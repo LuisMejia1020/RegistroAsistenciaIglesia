@@ -1,11 +1,49 @@
 "use strict";
+// Creamos un objeto con un arreglo de usuarios con sus contrasenas 
+const users = [
+    { id: 1, username: "johnDoe", password: "1234" },
+    { id: 2, username: "janeSmith", password: "1234" },
+    { id: 3, username: "ErwinSmith", password: "1234" },
+    { id: 4, username: "CapitanLevi", password: "1234" },
+    { id: 5, username: "ErenJaeger", password: "1234" },
+    { id: 6, username: "ThorOdinson", password: "1234" },
+    { id: 7, username: "HeltonLopez", password: "1234" },
+    { id: 8, username: "mylove", password: "1234" },
+    { id: 9, username: "JoseMejia", password: "1234" },
+    { id: 10, username: "LuisMejia", password: "1234" },
+    { id: 11, username: "JueVioleGrace", password: "1234" }
+];
+//Esta funcion es para autenticar la informacion de un usuario y su contrasena
+function authenticate(username, password) {
+    // vamos a encontrar el usuario con el username que el establecio 
+    const user = users.find((user) => user.username === username);
+    if (user) {
+        // Cuando encontremos el usuario, esta linea de codigo verificara si la password es correcta 
+        return user.password === password;
+    }
+    //si el usuario no se encuentra que retorne un false 
+    return false;
+}
+//creamos variables para usarlos de parametros 
+const username = "LuisMejia";
+const password = "1234";
+if (authenticate(username, password)) {
+    console.log("Registro exitoso, bienvenido hermano");
+    // cuando haga login exitosamente debemos de establecer un enlace a la pantalla con el listado de miembros para pasar asistencia 
+}
+else {
+    console.log("no pudo hacer login, revise sus datos por favor ");
+    // podriamos redirigir a una pagina donde diga que no existe ese usuario 
+}
 class RegistroAsistencia {
     miembros;
     attendance;
+    users;
     constructor() {
         // falta inicializar los miembros y la asistencia de la base de datos 
         this.miembros = [];
         this.attendance = [];
+        this.users = [];
     }
     // esta funcion nos permite agregar a un miembro a la base de datos
     addMember(member) {
@@ -15,6 +53,12 @@ class RegistroAsistencia {
     // usamos find para que sea especifico ya que el id es un numero unico que no se repite 
     getMember(id) {
         return this.miembros.find(member => member.id === id);
+    }
+    addUser(users) {
+        this.users.push(users);
+    }
+    getUser(id) {
+        return this.users.find(user => user.id === id);
     }
     // Esta funcion mide la asistencia de un miembro de la iglesia
     recordAsistencia(memberId, fechaCulto) {
@@ -30,41 +74,50 @@ class RegistroAsistencia {
     dameAsistencia(memberId) {
         return this.attendance.filter(record => record.memberId === memberId);
     }
-    deleteMember(memberId) {
-        const miembroEncontrado = this.miembros.find((miembros) => memberId === memberId);
-        if (miembroEncontrado) {
-            miembroEncontrado.memberActivo = false;
-            console.log("Lo siento hermano, la persona con el id ", memberId, "ya no tiene su membresia activa en nuestra iglesia");
-        }
-        else {
-            console.log("No esta el Id que usted deseaba hermano, lo siento");
-        }
-        return this.miembros;
+    holaHermanos(mensaje) {
+        const mensajeSoloParaActivos = this.miembros.filter(member => member.memberActivo);
+        mensajeSoloParaActivos.forEach(member => {
+            console.log(`mensaje enviado "${mensaje}" to ${member.nombre}.`);
+        });
     }
-    holaHermanos(memberActivo) {
-        const miembrosDeIglesia = this.miembros.filter(miembros => memberActivo === true);
-        if (miembrosDeIglesia) {
-            console.log("Buenos dias Hermanos, gracias por ser parte de nuestra Iglesia, Dios los ama", miembrosDeIglesia);
+    deletemember(memberId) {
+        const adiosMiembro = this.miembros.findIndex(member => member.id === memberId);
+        if (adiosMiembro !== -1) {
+            this.miembros.splice(adiosMiembro, 1);
+            console.log(`el miembro con el id ${memberId} ya no es miembro de nuestra iglesia.`);
         }
         else {
-            console.log("no forma parte de nuestra iglesia");
+            console.log(`el usuario con el id solicitado ${memberId} no forma parte de nuestra iglesia .`);
         }
-        return miembrosDeIglesia;
+        {
+        }
     }
 }
 // creamos las instancias con usaremos la clase attendancestracker
 const registrador = new RegistroAsistencia();
 // hacemos objetos donde agregamos a nuestros miembros 
-registrador.addMember({ id: 1, nombre: 'John Doe', email: 'john.doe@gmail.com', telefono: '+504 99776354', memberActivo: true });
-registrador.addMember({ id: 2, nombre: 'Jane Smith', email: 'jane.smith@egmail.com', telefono: '+504 34776354', memberActivo: true });
-registrador.addMember({ id: 3, nombre: 'Erwin Smith', email: 'erwinsmith@attack.com', telefono: '+504 99476346', memberActivo: true });
-registrador.addMember({ id: 4, nombre: 'Capitan Levi', email: 'Capitan@gmail.com', telefono: '+504 99953217', memberActivo: true });
-registrador.addMember({ id: 5, nombre: 'Eren Jeager', email: 'titandeataque@gmail.com', telefono: '+1 202 9833175', memberActivo: true });
-registrador.addMember({ id: 6, nombre: 'Thor Odinson', email: 'Thor@gmail.com', telefono: '+504 98532698', memberActivo: true });
+registrador.addMember({ id: 1, nombre: 'John Doe', email: 'john.doe@gmail.com', telefono: '+504 99776354', memberActivo: false });
+registrador.addMember({ id: 2, nombre: 'Jane Smith', email: 'jane.smith@egmail.com', telefono: '+504 34776354', memberActivo: false });
+registrador.addMember({ id: 3, nombre: 'Erwin Smith', email: 'erwinsmith@attack.com', telefono: '+504 99476346', memberActivo: false });
+registrador.addMember({ id: 4, nombre: 'Capitan Levi', email: 'Capitan@gmail.com', telefono: '+504 99953217', memberActivo: false });
+registrador.addMember({ id: 5, nombre: 'Eren Jeager', email: 'titandeataque@gmail.com', telefono: '+1 202 9833175', memberActivo: false });
+registrador.addMember({ id: 6, nombre: 'Thor jeager', email: 'Thor@gmail.com', telefono: '+504 98532698', memberActivo: true });
 registrador.addMember({ id: 7, nombre: 'Helton Lopez', email: 'Helton@gmail.com', telefono: '+504 3387491', memberActivo: true });
 registrador.addMember({ id: 8, nombre: 'Ivanna Konstantinovna Perepeshko', email: 'Ivanna@gmail.com', telefono: '+9 6584765341', memberActivo: true });
 registrador.addMember({ id: 9, nombre: 'Jose David Mejia Castro', email: 'Jose@gmail.com', telefono: '+43 45789324', memberActivo: true });
 registrador.addMember({ id: 10, nombre: 'Luis Fernando Mejia Castro', email: 'Luisrvp5@gmail.com', telefono: '+504 33614633', memberActivo: true });
+registrador.addMember({ id: 11, nombre: 'Jue Viole Grace', email: 'jue5@gmail.com', telefono: '+1 202 987 4561', memberActivo: true });
+registrador.addUser({ id: 1, username: "johnDoe", password: "1234" });
+registrador.addUser({ id: 2, username: "janeSmith", password: "1234" });
+registrador.addUser({ id: 3, username: "ErwinSmith", password: "1234" });
+registrador.addUser({ id: 4, username: "CapitanLevi", password: "1234" });
+registrador.addUser({ id: 5, username: "ErenJaeger", password: "1234" });
+registrador.addUser({ id: 6, username: "ThorOdinson", password: "1234" });
+registrador.addUser({ id: 7, username: "HeltonLopez", password: "1234" });
+registrador.addUser({ id: 8, username: "mylove", password: "1234" });
+registrador.addUser({ id: 9, username: "JoseMejia", password: "1234" });
+registrador.addUser({ id: 10, username: "LuisMejia", password: "1234" });
+registrador.addUser({ id: 11, username: "JueVioleGrace", password: "1234" });
 // usamos la funcion recordAttendance y llenamos los parametros 
 registrador.recordAsistencia(1, '12/02/2023');
 registrador.recordAsistencia(2, '04/06/2021');
@@ -99,8 +152,15 @@ console.log("Este es el record de asistencia del hermano ", asistenciaMyLove);
 console.log("Este es el record de asistencia del hermano ", asistenciaJose);
 console.log("Este es el record de asistencia del hermano ", miAsistencia);
 console.log("Este es el record de asistencia del hermano ", miAsistencia);
-//borramos miembros
-//console.log(registrador.deleteMember(1))
-//console.log(registrador.deleteMember(10))
 //notificar a los hermanos de la iglesia 
-console.log(registrador.holaHermanos(true));
+console.log(registrador.holaHermanos("Hola hermanos, bendiciones a todos, si recibes este msg es porque sos parte de nuestra comunidad"));
+//borramos miembros
+console.log(registrador.deletemember(1));
+console.log(registrador.deletemember(10));
+console.log(registrador.deletemember(7));
+console.log(registrador.getUser(1));
+console.log(registrador.getMember(1));
+console.log(registrador.getUser(2));
+console.log(registrador.getMember(2));
+console.log(registrador.getUser(3));
+console.log(registrador.getMember(3));
