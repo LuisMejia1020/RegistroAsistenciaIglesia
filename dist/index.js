@@ -49,14 +49,16 @@ class RegistroAsistencia {
     addMember(member) {
         this.miembros.push(member);
     }
-    // con esta funcion obtenemos un miembro por id 
+    // con esta funcion obtenemos un miembro con su informacion personal por id 
     // usamos find para que sea especifico ya que el id es un numero unico que no se repite 
     getMember(id) {
         return this.miembros.find(member => member.id === id);
     }
+    //con esta funcion agregamos usuarios 
     addUser(users) {
         this.users.push(users);
     }
+    //con esta funcion obtenemos todos los usuarios con su pass 
     getUser(id) {
         return this.users.find(user => user.id === id);
     }
@@ -74,12 +76,14 @@ class RegistroAsistencia {
     dameAsistencia(memberId) {
         return this.attendance.filter(record => record.memberId === memberId);
     }
+    //esta funcion nos permitira mandar un msg a todos nuestros usuarios que se encuentran activo con nuestra comunidad
     holaHermanos(mensaje) {
         const mensajeSoloParaActivos = this.miembros.filter(member => member.memberActivo);
         mensajeSoloParaActivos.forEach(member => {
             console.log(`mensaje enviado "${mensaje}" to ${member.nombre}.`);
         });
     }
+    //Esta funcion nos permite borrar un miembro del sistema
     deletemember(memberId) {
         const adiosMiembro = this.miembros.findIndex(member => member.id === memberId);
         if (adiosMiembro !== -1) {
@@ -158,9 +162,10 @@ console.log(registrador.holaHermanos("Hola hermanos, bendiciones a todos, si rec
 console.log(registrador.deletemember(1));
 console.log(registrador.deletemember(10));
 console.log(registrador.deletemember(7));
+//presentamos en consola cada miembro con su informacion personal asi como su usuario y pass
 console.log(registrador.getUser(1));
-console.log(registrador.getMember(1));
 console.log(registrador.getUser(2));
-console.log(registrador.getMember(2));
 console.log(registrador.getUser(3));
+console.log(registrador.getMember(1));
+console.log(registrador.getMember(2));
 console.log(registrador.getMember(3));

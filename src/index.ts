@@ -114,7 +114,7 @@ interface IUser {
     // esta funcion mide el record de asistencia de un miembro 
     // usamos la interface de attendace 
     dameAsistencia(memberId: number): IAttendance[] {
-    return this.attendance.filter(record => record.memberId === memberId)
+        return this.attendance.filter(record => record.memberId === memberId)
      }
 
      //esta funcion nos permitira mandar un msg a todos nuestros usuarios que se encuentran activo con nuestra comunidad
@@ -222,14 +222,13 @@ console.log(registrador.deletemember(7))
 
 //presentamos en consola cada miembro con su informacion personal asi como su usuario y pass
 console.log(registrador.getUser(1))
-console.log(registrador.getMember(1))
 console.log(registrador.getUser(2))
-console.log(registrador.getMember(2))
 console.log(registrador.getUser(3))
-console.log(registrador.getMember(3))
+
  
-
-
+console.log(registrador.getMember(1))
+console.log(registrador.getMember(2))
+console.log(registrador.getMember(3))
 
 
 
