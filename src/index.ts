@@ -1,4 +1,3 @@
-
 /// interface de una persona asistiendo a una iglesia
 interface IChurchMember {
     id: number
@@ -39,7 +38,8 @@ interface IUser {
     { id:8, username: "mylove", password: "1234" },
     { id:9, username: "JoseMejia", password: "1234" },
     { id:10, username: "LuisMejia", password: "1234" },
-    { id:11, username: "JueVioleGrace", password: "1234" }
+    { id:11, username: "JueVioleGrace", password: "1234" },
+    { id:12, username: "JaniFlores", password: "royale" }
   ];
 
     //Esta funcion es para autenticar la informacion de un usuario y su contrasena
@@ -55,11 +55,11 @@ interface IUser {
     }
 
     //creamos variables para usarlos de parametros 
-    const username = "LuisMejia";
-    const password = "1234";
+    const username = "JaniFlores";
+    const password = "royale";
 
     if (authenticate(username, password)) {
-    console.log("Registro exitoso, bienvenido hermano");
+    console.log("Hola Jani, que bueno que estas de regreso ");
     // cuando haga login exitosamente debemos de establecer un enlace a la pantalla con el listado de miembros para pasar asistencia 
     } else {
     console.log("no pudo hacer login, revise sus datos por favor ");
@@ -158,6 +158,7 @@ registrador.addMember({ id: 8, nombre: 'Ivanna Konstantinovna Perepeshko', email
 registrador.addMember({ id: 9, nombre: 'Jose David Mejia Castro', email: 'Jose@gmail.com', telefono: '+43 45789324', memberActivo: true })
 registrador.addMember({ id: 10, nombre: 'Luis Fernando Mejia Castro', email: 'Luisrvp5@gmail.com', telefono: '+504 33614633' , memberActivo: true})
 registrador.addMember({ id: 11, nombre: 'Jue Viole Grace', email: 'jue5@gmail.com', telefono: '+1 202 987 4561' , memberActivo: true})
+registrador.addMember({ id: 12, nombre: 'Jani Graciela Flores Lama', email: 'jani@gmail.com', telefono: '+504 98765431x' , memberActivo: true})
 
 
 registrador.addUser({id:1, username: "johnDoe", password: "1234"})
@@ -171,6 +172,7 @@ registrador.addUser({id:8, username: "mylove", password: "1234"})
 registrador.addUser({id:9, username: "JoseMejia", password: "1234"})
 registrador.addUser({id:10, username: "LuisMejia", password: "1234"})
 registrador.addUser({id:11, username: "JueVioleGrace", password: "1234"})
+registrador.addUser({id:12, username: "JaniFlores", password: "royale"})
 
 
 // usamos la funcion recordAttendance y llenamos los parametros 
@@ -184,6 +186,7 @@ registrador.recordAsistencia(7, '24/09/2023')
 registrador.recordAsistencia(8, '31/12/2023')
 registrador.recordAsistencia(9, '07/07/2023')
 registrador.recordAsistencia(10, '14/02/2023')
+registrador.recordAsistencia(12, '19/02/2023')
 
 
 // creamos una variable donde obtenemos la asistencia del miembro a la iglesia  
@@ -197,6 +200,7 @@ const asistenciaHelton = registrador.dameAsistencia(7)
 const asistenciaMyLove = registrador.dameAsistencia(8)
 const asistenciaJose = registrador.dameAsistencia(9)
 const miAsistencia = registrador.dameAsistencia(10)
+const janiAsistencia = registrador.dameAsistencia(12)
 
 
 /// mandamos a imprimir a consola 
@@ -211,6 +215,7 @@ console.log("Este es el record de asistencia del hermano ",asistenciaMyLove)
 console.log("Este es el record de asistencia del hermano ",asistenciaJose)
 console.log("Este es el record de asistencia del hermano ",miAsistencia)
 console.log("Este es el record de asistencia del hermano ",miAsistencia)
+console.log("Este es el record de asistencia del hermano ",janiAsistencia)
 
 //notificar a los hermanos de la iglesia 
 console.log(registrador.holaHermanos("Hola hermanos, bendiciones a todos, si recibes este msg es porque sos parte de nuestra comunidad"))
@@ -221,14 +226,14 @@ console.log(registrador.deletemember(10))
 console.log(registrador.deletemember(7))
 
 //presentamos en consola cada miembro con su informacion personal asi como su usuario y pass
-console.log(registrador.getUser(1))
-console.log(registrador.getUser(2))
-console.log(registrador.getUser(3))
+console.log(registrador.getUser(12))
+//console.log(registrador.getUser(2))
+//console.log(registrador.getUser(3))
 
  
-console.log(registrador.getMember(1))
-console.log(registrador.getMember(2))
-console.log(registrador.getMember(3))
+console.log(registrador.getMember(12))
+//console.log(registrador.getMember(2))
+//console.log(registrador.getMember(3))
 
 
 
